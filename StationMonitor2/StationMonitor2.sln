@@ -13,8 +13,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GSMFactoryModule", "..\GSMF
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GSMShipPortModule", "..\GSMShipPortModule\GSMShipPortModule.shproj", "{33CFF8FB-883D-40B4-BD9E-BC295357D9BA}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "StationMonitorCore", "..\StationMonitorCore\StationMonitorCore.shproj", "{0CA5939F-4A38-4E20-B477-8A74117737CB}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\StationMonitorCore\StationMonitorCore.projitems*{0ca5939f-4a38-4e20-b477-8a74117737cb}*SharedItemsImports = 13
 		..\GSMShipPortModule\GSMShipPortModule.projitems*{33cff8fb-883d-40b4-bd9e-bc295357d9ba}*SharedItemsImports = 13
 		..\GSMGasPlantModule\GSMGasPlantModule.projitems*{4f34427c-af8a-4494-96e7-3319a18cefbf}*SharedItemsImports = 13
 		..\GSMPowerPlantModule\GSMPowerPlantModule.projitems*{61eba249-19f3-48b6-a25b-a4cee90168ba}*SharedItemsImports = 13
@@ -22,6 +25,7 @@ Global
 		..\GSMGasPlantModule\GSMGasPlantModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
 		..\GSMPowerPlantModule\GSMPowerPlantModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
 		..\GSMShipPortModule\GSMShipPortModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
+		..\StationMonitorCore\StationMonitorCore.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
 		..\GSMFactoryModule\GSMFactoryModule.projitems*{8e07ad4c-7e05-41e0-97c0-5815793d14c0}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

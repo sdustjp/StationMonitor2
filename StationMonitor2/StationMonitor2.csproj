@@ -49,17 +49,8 @@
     <AdditionalFiles Include="MDK\MDK.paths.props">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AdditionalFiles>
-    <Compile Include="Monitor.cs" />
-    <Compile Include="MonitorBlock.cs" />
-    <Compile Include="MonitorBlockBuilder.cs" />
-    <Compile Include="MonitorBlockParser.cs" />
     <Compile Include="MonitorBlockRenderer.cs" />
-    <Compile Include="MonitorContents.cs" />
-    <Compile Include="MonitorInfo.cs" />
-    <Compile Include="MonitorOptions.cs" />
     <Compile Include="MonitorRenderer.cs" />
-    <Compile Include="MonitorTarget.cs" />
-    <Compile Include="ParseException.cs" />
     <Compile Include="Program.cs" />
     <AdditionalFiles Include="Instructions.readme" />
     <AdditionalFiles Include="thumb.png" />
@@ -69,12 +60,12 @@
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="SpriteId.cs" />
     <Compile Include="SpritesFrameBuilder.cs" />
-    <Compile Include="StationMonitorCore.cs" />
   </ItemGroup>
   <Import Project="..\GSMFactoryModule\GSMFactoryModule.projitems" Label="Shared" />
   <Import Project="..\GSMGasPlantModule\GSMGasPlantModule.projitems" Label="Shared" />
   <Import Project="..\GSMPowerPlantModule\GSMPowerPlantModule.projitems" Label="Shared" />
   <Import Project="..\GSMShipPortModule\GSMShipPortModule.projitems" Label="Shared" />
+  <Import Project="..\StationMonitorCore\StationMonitorCore.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <Copy SourceFiles="MDK\MDK.options.props" DestinationFolder="$(TargetDir)\MDK" />
