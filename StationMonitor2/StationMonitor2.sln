@@ -5,7 +5,25 @@ VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StationMonitor2", "StationMonitor2.csproj", "{6A03ADFE-BBE4-4F57-9C23-327F34C24F63}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GSMPowerPlantModule", "..\GSMPowerPlantModule\GSMPowerPlantModule.shproj", "{61EBA249-19F3-48B6-A25B-A4CEE90168BA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GSMGasPlantModule", "..\GSMGasPlantModule\GSMGasPlantModule.shproj", "{4F34427C-AF8A-4494-96E7-3319A18CEFBF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GSMFactoryModule", "..\GSMFactoryModule\GSMFactoryModule.shproj", "{8E07AD4C-7E05-41E0-97C0-5815793D14C0}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GSMShipPortModule", "..\GSMShipPortModule\GSMShipPortModule.shproj", "{33CFF8FB-883D-40B4-BD9E-BC295357D9BA}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\GSMShipPortModule\GSMShipPortModule.projitems*{33cff8fb-883d-40b4-bd9e-bc295357d9ba}*SharedItemsImports = 13
+		..\GSMGasPlantModule\GSMGasPlantModule.projitems*{4f34427c-af8a-4494-96e7-3319a18cefbf}*SharedItemsImports = 13
+		..\GSMPowerPlantModule\GSMPowerPlantModule.projitems*{61eba249-19f3-48b6-a25b-a4cee90168ba}*SharedItemsImports = 13
+		..\GSMFactoryModule\GSMFactoryModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
+		..\GSMGasPlantModule\GSMGasPlantModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
+		..\GSMPowerPlantModule\GSMPowerPlantModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
+		..\GSMShipPortModule\GSMShipPortModule.projitems*{6a03adfe-bbe4-4f57-9c23-327f34c24f63}*SharedItemsImports = 4
+		..\GSMFactoryModule\GSMFactoryModule.projitems*{8e07ad4c-7e05-41e0-97c0-5815793d14c0}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 	EndGlobalSection

@@ -21,62 +21,111 @@ namespace IngameScript
 {
     partial class Program : MyGridProgram
     {
-        // This file contains your actual script.
+        #region mdk macros
+        // ========================================================================================
+        //  Station Monitor v2
         //
-        // You can either keep all your code here, or you can create separate
-        // code files to make your program easier to navigate while coding.
-        //
-        // In order to add a new utility class, right-click on your project, 
-        // select 'New' then 'Add Item...'. Now find the 'Space Engineers'
-        // category under 'Visual C# Items' on the left hand side, and select
-        // 'Utility Class' in the main area. Name it in the box below, and
-        // press OK. This utility class will be merged in with your code when
-        // deploying your final script.
-        //
-        // You can also simply create a new utility class manually, you don't
-        // have to use the template if you don't want to. Just do so the first
-        // time to see what a utility class looks like.
-        // 
-        // Go to:
-        // https://github.com/malware-dev/MDK-SE/wiki/Quick-Introduction-to-Space-Engineers-Ingame-Scripts
-        //
-        // to learn more about ingame scripts.
+        //  author sdust
+        //  update $MDK_DATETIME$
+        // ========================================================================================
+        #endregion
 
+        // ----------------------------------------------------------------------------------------
+        //  Configuration
+        // ----------------------------------------------------------------------------------------
+        const string PROGRAM_NAME = "Station Monitor v2.0 G alpha 6";
+        #region mdk macros
+        const string PROGRAM_UPDATE = "$MDK_DATETIME$";
+        #endregion
+
+        const string DEFAULT_PANEL_KEYWORD = "[GSM]";
+        //const string DEFAULT_PANEL_KEYWORD = "[GSMTest]";
+
+        const bool AUTO_UPDATE = true;
+        const bool DEBUG = false;
+
+        // ----------------------------------------------------------------------------------------
+        //  Global
+        // ----------------------------------------------------------------------------------------
+
+        GraphicalStationMonitor GSM;
+
+        bool ExecSearch = false;
+        bool ExecUpdate = false;
+        bool ExecDraw = false;
+
+        // ----------------------------------------------------------------------------------------
+        //  Program
+        // ----------------------------------------------------------------------------------------
         public Program()
         {
-            // The constructor, called only once every session and
-            // always before any other method is called. Use it to
-            // initialize your script. 
-            //     
-            // The constructor is optional and can be removed if not
-            // needed.
-            // 
-            // It's recommended to set Runtime.UpdateFrequency 
-            // here, which will allow your script to run itself without a 
-            // timer block.
-        }
+            GraphicalStationMonitor.LoadSpriteDatas();
 
-        public void Save()
-        {
-            // Called when the program needs to save its state. Use
-            // this method to save your state to the Storage field
-            // or some other means. 
-            // 
-            // This method is optional and can be removed if not
-            // needed.
-        }
+            GSM = GraphicalStationMonitor.GetInstance(this);
+            GasPlantMod.Load(GSM);
+            PowerPlantMod.Load(GSM);
+            FactoryMod.Load(GSM);
+            ShipPortMod.Load(GSM);
 
+            if (AUTO_UPDATE) Runtime.UpdateFrequency = UpdateFrequency.Update10;
+
+            GSM.Search();
+        }
+        // ----------------------------------------------------------------------------------------
+        //  Save
+        // ----------------------------------------------------------------------------------------
+        // ----------------------------------------------------------------------------------------
+        //  Main
+        // ----------------------------------------------------------------------------------------
         public void Main(string argument, UpdateType updateSource)
         {
-            // The main entry point of the script, invoked every time
-            // one of the programmable block's Run actions are invoked,
-            // or the script updates itself. The updateSource argument
-            // describes where the update came from. Be aware that the
-            // updateSource is a  bitfield  and might contain more than 
-            // one update type.
-            // 
-            // The method itself is required, but the arguments above
-            // can be removed if not needed.
+            Echo("program start!");
+            Echo(PROGRAM_NAME);
+            Echo(PROGRAM_UPDATE);
+
+            switch (updateSource)
+            {
+                case UpdateType.Update1:
+                case UpdateType.Update10:
+                case UpdateType.Update100:
+
+                    Echo($"program count: {GSM.ProgramCount}");
+                    Echo($"frame count: {GSM.FrameCount}");
+
+                    if (GSM.ProgramCount % 50 == 0) ExecSearch = true;
+                    if (GSM.ProgramCount % 10 == 0) ExecUpdate = true;
+                    if (GSM.ProgramCount % 1 == 0) ExecDraw = true;
+
+                    if (ExecSearch) { GSM.Search(); ExecSearch = false; }
+                    if (ExecUpdate) { GSM.Update(); ExecUpdate = false; }
+                    if (ExecDraw) { GSM.DrawSprites(); ExecDraw = false; }
+
+                    GSM.CountUp();
+
+                    break;
+
+                case UpdateType.Terminal:
+                case UpdateType.Trigger:
+
+                    switch (argument)
+                    {
+                        case "search":
+                            ExecSearch = true;
+                            break;
+                        case "update":
+                            ExecUpdate = true;
+                            break;
+                        case "render":
+                            ExecDraw = true;
+                            break;
+                    }
+
+                    break;
+
+            }
+
+            Echo("program end!");
         }
+        // ----------------------------------------------------------------------------------------
     }
 }
